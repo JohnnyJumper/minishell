@@ -6,7 +6,7 @@
 #    By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 13:01:35 by jtahirov          #+#    #+#              #
-#    Updated: 2018/05/16 18:20:22 by jtahirov         ###   ########.fr        #
+#    Updated: 2018/05/16 18:48:29 by jtahirov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,7 @@ FT_PRINTF_SRC = $(patsubst ft%,$(PRINTF_DIR)/ft%, $(FT_PRINTF))
 PRINTF_OBJECT = $(FT_PRINTF_SRC:.c=.o)
 
 %.o: %.c $(DEPS)
-	@echo "\033[1;34m\c"
 	$(CC) -c -o $@ $< $(CFLAGS)
-	@echo "\033[0m\c"
-
 
 all: $(NAME) index
 
@@ -57,9 +54,8 @@ index:
 	@ranlib $(NAME)
 
 $(NAME): $(OBJECT) $(PRINTF_OBJECT)
-	@echo "\033[0;34m\c"
-	ar rc $@ $^
-	@echo "\033[0m\c"
+	@ar rc $@ $^
+	@echo "Libft Compiled"
 
 clean:
 	@/bin/rm -f $(OBJECT) $(PRINTF_OBJECT) 
