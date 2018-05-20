@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 13:01:35 by jtahirov          #+#    #+#              #
-#    Updated: 2018/05/16 18:48:29 by jtahirov         ###   ########.fr        #
+#    Updated: 2018/05/20 14:31:38 by jtahirov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,18 @@ FT_PRINTF =	ft_args.c ft_get_addr.c ft_get_char.c ft_printf_binary.c ft_get_hex.
 			ft_dispatch.c ft_conversions.c ft_get_octal.c ft_get_str.c ft_wstr_helper.c ft_logic.c \
 			ft_parse.c
 
+QUEUE_DIR = ./ft_queue
+QUEUE_SRC = init.c empty.c peek.c push.c pop.c
+QUEUE = $(patsubst %, $(QUEUE_DIR)/ft_queue_%, $(QUEUE_SRC))
+QUEUE_OBJECT = $(QUEUE:.c=.o)
+
+DICT_DIR = ./ft_dict
+DICT_SRC = hash.c create_item.c init.c insert.c search.c remove.c
+DICT = $(patsubst %, $(DICT_DIR)/ft_dict_%, $(DICT_SRC))
+DICT_OBJECT = $(DICT:.c=.o)
+
+DATA_STRUCTURES = $(QUEUE_OBJECT) $(DICT_OBJECT)
+
 FT_PRINTF_SRC = $(patsubst ft%,$(PRINTF_DIR)/ft%, $(FT_PRINTF))
 PRINTF_OBJECT = $(FT_PRINTF_SRC:.c=.o)
 
@@ -53,12 +65,12 @@ all: $(NAME) index
 index: 
 	@ranlib $(NAME)
 
-$(NAME): $(OBJECT) $(PRINTF_OBJECT)
+$(NAME): $(OBJECT) $(PRINTF_OBJECT) $(DATA_STRUCTURES)
 	@ar rc $@ $^
 	@echo "Libft Compiled"
 
 clean:
-	@/bin/rm -f $(OBJECT) $(PRINTF_OBJECT) 
+	@/bin/rm -f $(OBJECT) $(PRINTF_OBJECT) $(DATA_STRUCTURES)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
