@@ -2,7 +2,7 @@ NAME = minishell
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 DEBUG = -g
-
+ 
 SRC_PATH = ./src/
 EXE_PATH = ./bin/
 INCLUDE_PATH = ./include/
@@ -10,7 +10,7 @@ LIBFT_PATH = ./libft/
 OBJ_PATH = ./obj/
 LIBFT = $(LIBFT_PATH)libft.a
 
-SRC_NAME = main.c 
+SRC_NAME = main.c ft_utility.c ft_parse.c ft_init.c ft_builtins.c
 
 SRC = $(patsubst %, $(SRC_PATH)%, $(SRC_NAME))
 

@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/20 13:51:45 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/20 14:28:02 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/20 19:57:25 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct	s_dict_item
 {
-	char				*key;
-	void				*value;
-	struct s_dict_item	*next;
+	char				*key; // certain fd
+	void				*value; //My buffer for certain fd
+	struct s_dict_item	*next; // next fd
 }				t_dict_item;
 
 typedef struct	s_dict
