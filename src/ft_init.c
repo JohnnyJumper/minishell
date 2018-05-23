@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 20:55:00 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/22 21:01:16 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/23 14:52:52 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_dict 	*ft_initialize_builtins()
 
 	builtins = ft_dict_init(32);
 	ft_dict_insert(builtins, "pwd", &ft_pwd);
+	ft_dict_insert(builtins, "cd", &ft_cd);
+	ft_dict_insert(builtins, "echo", &ft_echo);
 	return (builtins);
 }

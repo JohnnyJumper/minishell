@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 19:44:05 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/22 21:01:45 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/22 21:46:27 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,14 @@ static void ft_sanitize(char command[MAXINPUT])
 			*ptr = ' ';
 		ptr++;
 	}
-
 }
 
-void 	ft_parse_command(char command[MAXINPUT], t_shell *shell)
+void 	ft_parse_command(char command[MAXINPUT], t_all *all)
 {
-	char 			**words;
-	t_builtin_func 	*func;
+	t_bfunc 	*func;
 
 	ft_sanitize(command);
-	words = ft_strsplit(command, ' ');
-	func = (t_builtin_func *)ft_dict_search(shell->builtins, words[0]);
-	func(shell->env);	
+	all->words = ft_strsplit(command, ' ');
+	func = (t_bfunc *)ft_dict_search(all->shell->builtins, all->words[0]);
+	func(all);
 }

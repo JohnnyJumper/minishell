@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/20 13:51:45 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/20 19:57:25 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/22 21:58:52 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ t_dict_item		*ft_dict_create_item(char *key, void *value);
 int				ft_dict_insert(t_dict *dict, char *key, void *value);
 void			*ft_dict_search(t_dict *dict, char *key);
 void			ft_dict_remove(t_dict *dict, char *key);
+void 			ft_dict_free(t_dict **dict);
 
 #endif

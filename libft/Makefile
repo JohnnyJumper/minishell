@@ -6,7 +6,7 @@
 #    By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 13:01:35 by jtahirov          #+#    #+#              #
-#    Updated: 2018/05/21 14:19:18 by jtahirov         ###   ########.fr        #
+#    Updated: 2018/05/22 21:59:06 by jtahirov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ QUEUE = $(patsubst %, $(QUEUE_DIR)/ft_queue_%, $(QUEUE_SRC))
 QUEUE_OBJECT = $(QUEUE:.c=.o)
 
 DICT_DIR = ./ft_dict
-DICT_SRC = hash.c create_item.c init.c insert.c search.c remove.c
+DICT_SRC = hash.c create_item.c init.c insert.c search.c remove.c free.c
 DICT = $(patsubst %, $(DICT_DIR)/ft_dict_%, $(DICT_SRC))
 DICT_OBJECT = $(DICT:.c=.o)
 
