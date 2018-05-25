@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dict_create_item.c                              :+:      :+:    :+:   */
+/*   ft_dict_replace_value.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/20 13:59:07 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/25 13:34:24 by jtahirov         ###   ########.fr       */
+/*   Created: 2018/05/25 13:16:37 by jtahirov          #+#    #+#             */
+/*   Updated: 2018/05/25 13:24:30 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dict.h"
 
-t_dict_item	*ft_dict_create_item(char *key, void *value)
+void 	ft_dict_replace_value(t_dict *dict, char *key, void *new_value)
 {
-	t_dict_item	*fresh;
+	unsigned long 	index;
+	t_dict_item 	*iter;
 
-	if (!(fresh = (t_dict_item *)malloc(sizeof(t_dict_item))))
-		return (NULL);
-	ft_bzero(fresh, sizeof(t_dict_item));
-	fresh->key = ft_strdup(key);
-	fresh->value = value;
-	fresh->next = NULL;
-	return (fresh);
+	index = ft_dict_hash(key) % dict->capacity;
+	if (dict->items[index])
+	{
+		iter = dict->items[index];
+		while (iter && ft_strcmp(key, iter->key) != 0)
+			iter = iter->next;
+		if (!iter)
+			return ;
+		iter->value = new_value;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/20 14:12:11 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/20 19:57:09 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/25 13:34:29 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void ft_dict_item_free(t_dict_item **item)
 {
-	free((*item)->value);
 	free((*item)->key);
 	free((*item));
 	*item = NULL;
@@ -27,7 +26,8 @@ void	ft_dict_remove(t_dict *dict, char *key)
 	t_dict_item		*next;
 
 	index = ft_dict_hash(key) % dict->capacity;
-	iter = dict->items[index];
+	if (!(iter = dict->items[index]))
+		return ;
 	if (strcmp(key, iter->key) == 0)
 	{
 		dict->items[index] = iter->next;

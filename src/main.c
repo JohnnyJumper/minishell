@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 18:40:07 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/22 21:45:30 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/24 15:24:36 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv, char **environ)
 
 	if (argc || argv || environ)
 		;
-		fd = STDINPUT;
+	fd = STDINPUT;
 	all = (t_all *)ft_memalloc(sizeof(t_all));
 	all->shell = ft_init_variables(environ);
 	ft_run_shell(all, fd);
