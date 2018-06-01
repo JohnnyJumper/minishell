@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:57:50 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/21 14:19:23 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/05/27 12:26:05 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ unsigned char	ft_chrtohex(char x);
 int				ft_getopt(int argc, char *const argv[], const char *optstring);
 int				ft_countdig(long long num);
 char			*ft_strnfjoin(char **s1, char const *s2, int size);
-
+int 			ft_strclen(char *str, int c);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 18:40:07 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/24 15:24:36 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/06/01 13:29:59 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void ft_run_shell(t_all *all, int fd)
 {
-	char 	command[MAXINPUT];
+	char 	raw_command[MAXINPUT];
+	char 	*sanitized_command;
 	int 	ret;
 
 	while (1)
 	{
-		ft_print_dir(ft_dict_search(all->shell->env, "PS1"));
-		ft_bzero(command, MAXINPUT - 1);
-		ret = read(fd, command, MAXINPUT - 1);
-		command[ret] = '\0';
-		ft_parse_command(command, all);
+		ft_print_prompt(all->env.ps1);
+		ft_bzero(raw_command, MAXINPUT - 1);
+		ret = read(fd, raw_command, MAXINPUT - 1);
+		raw_command[ret] = '\0';
+		sanitized_command = ft_strtrim(raw_command);
+		ft_parse_command(sanitized_command, all);
 	}
 }
 
@@ -35,9 +37,11 @@ int main(int argc, char **argv, char **environ)
 
 	if (argc || argv || environ)
 		;
-	fd = STDINPUT;
+	// fd = STDINPUT;
+	fd = open("debug.txt", O_RDONLY);
 	all = (t_all *)ft_memalloc(sizeof(t_all));
-	all->shell = ft_init_variables(environ);
+	all->env = ft_get_env(environ);
+	all->builtins = ft_initialize_builtins();
 	ft_run_shell(all, fd);
 	return (0);
 }

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dict_search.c                                   :+:      :+:    :+:   */
+/*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/20 14:03:04 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/25 18:32:51 by jtahirov         ###   ########.fr       */
+/*   Created: 2018/05/27 12:24:43 by jtahirov          #+#    #+#             */
+/*   Updated: 2018/05/27 12:26:59 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dict.h"
+#include "libft.h"
 
-void	*ft_dict_search(t_dict *dict, char *key)
+int 	ft_strclen(char *str, int c)
 {
-	unsigned long	index;
-	t_dict_item		*iter;
+	int		length;
 
-	if (!key || !dict)
-		return (NULL);
-	index = ft_dict_hash(key) % dict->capacity;
-	iter = dict->items[index];
-	while (iter)
+	length = 0;
+	while (str[length])
 	{
-		if (strcmp(key, iter->key) == 0)
-			return (iter->value);
-		iter = iter->next;
+		if (str[length] == c)
+			return (length);
+		length++;
 	}
-	return (NULL);
+	return (length);
 }

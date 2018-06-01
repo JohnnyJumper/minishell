@@ -10,7 +10,8 @@ LIBFT_PATH = ./libft/
 OBJ_PATH = ./obj/
 LIBFT = $(LIBFT_PATH)libft.a
 
-SRC_NAME = main.c ft_utility.c ft_parse.c ft_init.c ft_builtins.c ft_builtins2.c
+SRC_NAME = main.c ft_utility.c ft_parse.c ft_init.c ft_builtins.c \
+			ft_builtins2.c ft_path.c ft_splitargs.c
 
 SRC = $(patsubst %, $(SRC_PATH)%, $(SRC_NAME))
 

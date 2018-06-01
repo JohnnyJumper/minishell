@@ -6,7 +6,7 @@
 #    By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 13:01:35 by jtahirov          #+#    #+#              #
-#    Updated: 2018/05/25 13:23:48 by jtahirov         ###   ########.fr        #
+#    Updated: 2018/05/27 12:26:23 by jtahirov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = ft_isascii.c ft_memcmp.c ft_strchr.c ft_strlen.c ft_strrchr.c 		\
 	  ft_print_array_int.c ft_lstpush.c ft_strnjoin.c ft_strrev.c ft_dectohex.c\
 	  ft_dectooctal.c ft_ltoa.c ft_strupper.c ft_isletter.c ft_iscapital.c \
 	  ft_strmjoin.c ft_get_binary.c ft_wcharlen.c ft_print_object_bit.c \
-	  ft_atoh.c ft_memjoin.c ft_getopt.c ft_countdig.c \
+	  ft_atoh.c ft_memjoin.c ft_getopt.c ft_countdig.c ft_strclen.c \
 	  ./ft_get_next_line/ft_get_next_line.c
 
 DEPS = libft.h ft_getopt.h ./ft_printf/ft_printf.h

@@ -1,1 +1,1 @@
-HOME
+echo "Hello This is a test" Yes

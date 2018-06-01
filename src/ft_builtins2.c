@@ -6,7 +6,7 @@
 /*   By: jtahirov <jtahirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 13:36:48 by jtahirov          #+#    #+#             */
-/*   Updated: 2018/05/25 13:37:04 by jtahirov         ###   ########.fr       */
+/*   Updated: 2018/06/01 12:54:35 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,47 @@ void	ft_echo(t_all *all)
 
 void 	ft_unsetenv(t_all *all)
 {
-	char 	*key;
+	int 	counter;
+	bool 	flag;
 
-	key = all->words[1];
-	if (!key)
+	if (!all->words[1])
 		return ;
-	ft_dict_remove(all->shell->env, key);
+	counter = 0;
+	flag = false;
+	while (all->env.env[counter])
+	{
+		if (!(ft_strcmp(all->words[1], all->env.env[counter])))
+			flag = true;
+		if (flag)
+		{
+			free(all->env.env[counter]);
+			if (all->env.env[counter + 1])
+				all->env.env[counter] = ft_strdup(all->env.env[counter + 1]);
+		}
+		counter++;
+	}
 }
 
 void 	ft_export(t_all *all)
 {
-	char 	*delim;	
+	int 	counter;
+	int 	length;
 
-	delim = ft_strchr(all->words[1], '=');
-	if (!delim)
+	if (!all->words[1])
 		return ;
-	*delim = '\0';
-	if (ft_dict_search(all->shell->env, all->words[1]))
-		ft_dict_replace_value(all->shell->env, all->words[1], delim + 1);
-	else
-		ft_dict_insert(all->shell->env, all->words[1], delim + 1);
+	length = ft_strclen(all->words[1], '=');
+	counter = 0;
+	while (all->env.env[counter])
+	{
+		if (!ft_strncmp(all->words[1],all->env.env[counter], length))
+		{
+			free(all->env.env[counter]);
+			all->env.env[counter] = ft_strdup(all->words[1]);
+			return ;
+		}
+		counter++;
+	}
+	ft_env_add(all, all->words[1]);
 }
 
 void 	ft_exit(t_all *all)
